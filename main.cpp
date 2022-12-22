@@ -50,8 +50,6 @@ template<typename T>struct Comparitor{
 
 template<typename T>struct Greater{
     bool operator()(T& lhs, T& rhs){
-        std::cout <<"helo world" <<"\n" << (*lhs)->x << "  <<===>>> " <<(*rhs)->x;
-        double epsilon = 0.0000001f;
         return std::isgreater((*lhs)->x, (*rhs)->x) ? true : false;
     }
 };
@@ -77,12 +75,12 @@ int main(){
         std::cout <<"{ x: " << el->x <<", y: " <<el->y <<" }\n";
     }
 
-    // std::cout << "\n\n";
-    // auto result = reorder(v_data, Comparitor<decltype(v_data.begin())>()) | Greater<decltype(v_data.begin())>();
-    // print_beautify(v_data);
-
-
 #if 0
+    std::cout << "\n\n";
+    auto result = reorder(v_data, Comparitor<decltype(v_data.begin())>()) | Greater<decltype(v_data.begin())>();
+    print_beautify(v_data);
+
+
     auto result = reorder(v_data, Comparitor<decltype(v_data.begin())>()) | [](auto& lhs, auto& rhs){ return (*lhs)->x > (*rhs)->x; };
     auto result = reorder(v_data, Comparitor<decltype(v_data.begin())>()) | Greater<std::remove_reference<decltype(v_data.begin())>>();
     print_beautify(v_data);
